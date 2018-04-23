@@ -281,10 +281,10 @@ class Main(QtWidgets.QMainWindow):
             value_error = True
 
         # Количество строк обучающего множества
-        train_set = self.gui.txtLearningSet.text()
+        train_set = self.gui.tableWidgetTrain.rowCount() / 100 * float(self.gui.txtLearningSet.text())
 
         # Количество строк тестового множества
-        test_set = self.gui.txtTestSet.text()
+        test_set = self.gui.tableWidgetTrain.rowCount() / 100 * float(self.gui.txtTestSet.text())
 
         # Считываем количество эпох
         epochs = self.gui.txtEpochs.text()

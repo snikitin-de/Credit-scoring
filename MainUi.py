@@ -5,6 +5,7 @@ from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QAbstractItemView, QAction
 
 import SpinBoxDelegate
+import SpinBoxDelegateTrain
 
 
 # Класс интерфейса и обработки событий
@@ -294,6 +295,7 @@ class MainUi:
 
         # Установка делегата на ячейки таблицы
         self.tableWidgetInput.setItemDelegate(SpinBoxDelegate.SpinBoxDelegate())
+        self.tableWidgetTrain.setItemDelegate(SpinBoxDelegateTrain.SpinBoxDelegateTrain())
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -312,8 +314,8 @@ class MainUi:
         self.lblSlope.setText(_translate("MainWindow", "Крутизна функции"))
         self.lblSlopeValue.setText(_translate("MainWindow", "1.0"))
         self.grpBoxTrain.setTitle(_translate("MainWindow", "Обучение нейронной сети"))
-        self.lblLearningSet.setText(_translate("MainWindow", "Обучающее множество"))
-        self.lblTestSet.setText(_translate("MainWindow", "Тестовое множество"))
+        self.lblLearningSet.setText(_translate("MainWindow", "Обучающее множество (%)"))
+        self.lblTestSet.setText(_translate("MainWindow", "Тестовое множество (%)"))
         self.lblEpochs.setText(_translate("MainWindow", "Количество эпох"))
         self.lblLearningRate.setText(_translate("MainWindow", "Скорость обучения"))
         self.btnTrain.setText(_translate("MainWindow", "Обучить"))
