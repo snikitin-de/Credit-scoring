@@ -51,17 +51,24 @@ class Main(QtWidgets.QMainWindow):
         if self.gui.tableWidgetInput.rowCount() > 0:
             # Диалог сохранения таблицы с исходными данными
             path = QFileDialog.getSaveFileName(None, 'Сохранить таблицу',
-                                               'c:\\', "Текстовые файлы (*.txt)")[0]
+                                               'c:\\', "CSV (*.csv)")[0]
 
+            # Если путь не пустой
             if path != "":
-                f = open(path, 'a', encoding='cp1251')
+                data = []
 
                 for i in range(self.gui.tableWidgetInput.rowCount()):
-                    for j in range(self.gui.tableWidgetInput.columnCount()):
-                        f.write(self.gui.tableWidgetInput.item(i, j).text() + " ")
-                    f.write("\n")
 
-                f.close()
+                    line = []
+
+                    for j in range(self.gui.tableWidgetInput.columnCount()):
+                        item = self.gui.tableWidgetInput.item(i, j)
+                        if item is not None:
+                            line.append(self.gui.tableWidgetInput.item(i, j).text())
+                    data.append(line)
+
+                # Записываем данные в CSV файл
+                self.csv_writer(data, path)
             else:
                 # Вывод ошибки
                 empty_input_msg = QMessageBox()
