@@ -2,7 +2,9 @@
 from PyQt5 import QtCore, QtWidgets
 
 
+# Класс интерфейса окна "О программе"
 class AboutUi(object):
+    # Настройка интерфейса
     def setupUi(self, About):
         About.setObjectName("About")
         About.resize(539, 143)
@@ -14,6 +16,7 @@ class AboutUi(object):
         self.retranslateUi(About)
         QtCore.QMetaObject.connectSlotsByName(About)
 
+    # Перевод интерфейса
     def retranslateUi(self, About):
         _translate = QtCore.QCoreApplication.translate
         About.setWindowTitle(_translate("About", "О программе"))

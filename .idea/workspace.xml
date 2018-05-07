@@ -14,11 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="384" column="72" lean-forward="false" selection-start-line="384" selection-start-column="72" selection-end-line="384" selection-end-column="72" />
+            <state relative-caret-position="225">
+              <caret line="100" column="43" lean-forward="false" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
+              <folding>
+                <element signature="e#17#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainUi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainUi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5440">
+              <caret line="278" column="55" lean-forward="false" selection-start-line="278" selection-start-column="55" selection-end-line="278" selection-end-column="55" />
               <folding>
                 <element signature="e#17#52#0" expanded="true" />
               </folding>
@@ -36,25 +48,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpinBoxDelegateTrain.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpinBoxDelegateTrain.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpinBoxDelegateTrain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="60">
+              <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainUi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainUi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="e#17#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,8 +75,8 @@
       <file leaf-file-name="GraphNeural.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GraphNeural.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="20">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
                 <element signature="e#17#43#0" expanded="true" />
               </folding>
@@ -87,8 +87,8 @@
       <file leaf-file-name="AboutUi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AboutUi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="360">
+              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -115,24 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>path</find>
-      <find>load_nn</find>
-      <find>self.network</find>
-      <find>create_</find>
-      <find>create_nn</find>
-      <find>not none</find>
-      <find>menuResults</find>
-      <find>actionResultsSave</find>
-      <find>actionLoadTxt</find>
-      <find>actionLoadCSV</find>
-      <find>tableWidgetResult</find>
-      <find>tabResult</find>
-      <find>Abou</find>
-      <find>menuLoadInitialData</find>
-      <find>table</find>
-      <find>Window</find>
-      <find>UiMainWindow</find>
-      <find>btnAddTableInput</find>
       <find>tablewidgeti</find>
       <find>Company</find>
       <find>add_row_alt</find>
@@ -145,6 +127,24 @@
       <find>testSet</find>
       <find>%</find>
       <find>Обучаю</find>
+      <find>test_set</find>
+      <find>входной</find>
+      <find>spboxInputLayer</find>
+      <find>layer[0]</find>
+      <find>input</find>
+      <find>create_nn</find>
+      <find>exit</find>
+      <find>what</find>
+      <find>result_altresult_alt</find>
+      <find>result_al</find>
+      <find>what_if</find>
+      <find>del</find>
+      <find>predict</find>
+      <find>rslt_alt</find>
+      <find>predic</find>
+      <find>all</find>
+      <find>result_alt</find>
+      <find>predict_nn</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -168,12 +168,12 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/main_ui.py" />
         <option value="$PROJECT_DIR$/spin_box_delegate.py" />
-        <option value="$PROJECT_DIR$/AboutUi.py" />
         <option value="$PROJECT_DIR$/About.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/SpinBoxDelegate.py" />
-        <option value="$PROJECT_DIR$/MainUi.py" />
         <option value="$PROJECT_DIR$/SpinBoxDelegateTrain.py" />
+        <option value="$PROJECT_DIR$/AboutUi.py" />
+        <option value="$PROJECT_DIR$/MainUi.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
       </list>
     </option>
   </component>
@@ -204,7 +204,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,6 +215,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -456,13 +456,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GraphNeural.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NeuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -687,39 +680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/About.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#17#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GraphNeural.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AboutUi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-1026271220/PyQt5/QtWidgets/QStyledItemDelegate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,16 +695,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/About.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="384" column="72" lean-forward="false" selection-start-line="384" selection-start-column="72" selection-end-line="384" selection-end-column="72" />
+        <state relative-caret-position="180">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
-            <element signature="e#17#52#0" expanded="true" />
+            <element signature="e#17#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SpinBoxDelegateTrain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AboutUi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphNeural.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/what_if.txt" />
     <entry file="file://$PROJECT_DIR$/SpinBoxDelegate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -751,20 +744,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainUi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="5440">
+          <caret line="278" column="55" lean-forward="false" selection-start-line="278" selection-start-column="55" selection-end-line="278" selection-end-column="55" />
           <folding>
             <element signature="e#17#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SpinBoxDelegateTrain.py">
+    <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="225">
+          <caret line="100" column="43" lean-forward="false" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#17#52#0" expanded="true" />
           </folding>
         </state>
       </provider>

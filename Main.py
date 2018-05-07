@@ -77,9 +77,34 @@ class Main(QtWidgets.QMainWindow):
             empty_input_msg.setText("Таблица пустая!")
             empty_input_msg.exec()
 
-    # Результат предсказания
+    # Результат предсказания для строки
     def rslt_alt(self):
+        # Инициализируем переменную для определения пустых ячеек значением True
+        empty_value = True
 
+        # Индекс выделенной строки
+        row = self.gui.tableWidgetTrain.currentIndex().row() + 1
+
+        # Проходим циклом по столбцам выделенной строки
+        for j in range(self.gui.tableWidgetInput.columnCount() - 1):
+            # Если найдена пустая ячейка, то меняем значение переменной empty_value на False и выходим из цикла
+            if self.gui.tableWidgetInput.item(row, j) is None:
+                empty_value = False
+                break
+
+        # Если найдена пустая ячейка, то выводим ошибку, иначе предсказываем результат
+        if empty_value is False:
+            # Вывод ошибки
+            empty_input_msg = QMessageBox()
+            empty_input_msg.setIcon(QMessageBox.Critical)
+            empty_input_msg.setWindowTitle("Ошибка обработки таблицы")
+            empty_input_msg.setText("Строка имеет одну или несколько пустых ячеек!")
+            empty_input_msg.exec()
+        else:
+            self.predict_nn(False)
+
+    # Результат предсказания для таблицы
+    def rslt_all_alt(self):
         # Инициализируем переменную для определения пустых ячеек значением True
         empty_value = True
 
@@ -100,7 +125,7 @@ class Main(QtWidgets.QMainWindow):
             empty_input_msg.setText("Таблица имеет одну или несколько пустых ячеек!")
             empty_input_msg.exec()
         else:
-            self.predict_nn()
+            self.predict_nn(True)
 
     # Добавить пустую строку
     def add_row_train(self):
@@ -122,24 +147,18 @@ class Main(QtWidgets.QMainWindow):
         self.gui.tableWidgetTrain.setRowCount(0)
         self.gui.tableWidgetTrain.setHorizontalHeaderLabels(self.gui.headers_train)
 
-    # Функция добавления числа входных нейроннов в список
-    def input_output_neurons(self):
-        self.gui.tableWidgetLayersNetwork.setRowCount(1)
-        item = QTableWidgetItem(str(self.gui.spboxInputLayer.value()))
-        item.setFlags(Qt.ItemIsEnabled)  # Запрет редактирования ячейки
-        self.gui.tableWidgetLayersNetwork.setItem(0, 0, item)
-        self.hidden_layers_count()
-
     # Функция добавления числа скрытых нейроннов в список
     def hidden_layers_count(self):
         self.gui.tableWidgetLayersNetwork.setRowCount(3)
-        self.gui.tableWidgetLayersNetwork.setItem(2, 0, QTableWidgetItem())
-        item = QTableWidgetItem(str(self.gui.spboxHiddenLayers.value()))
+        item = QTableWidgetItem(str(6))
         item.setFlags(Qt.ItemIsEnabled)  # Запрет редактирования ячейки
-        self.gui.tableWidgetLayersNetwork.setItem(1, 0, item)
-        item2 = QTableWidgetItem(str(1))
+        self.gui.tableWidgetLayersNetwork.setItem(0, 0, item)
+        item2 = QTableWidgetItem(str(self.gui.spboxHiddenLayers.value()))
         item2.setFlags(Qt.ItemIsEnabled)  # Запрет редактирования ячейки
-        self.gui.tableWidgetLayersNetwork.setItem(2, 0, item2)
+        self.gui.tableWidgetLayersNetwork.setItem(1, 0, item2)
+        item3 = QTableWidgetItem(str(1))
+        item3.setFlags(Qt.ItemIsEnabled)  # Запрет редактирования ячейки
+        self.gui.tableWidgetLayersNetwork.setItem(2, 0, item3)
 
     # Загрузка данных из текстового файла в таблицу с данными для обучения
     def load_txt_train(self):
@@ -244,7 +263,6 @@ class Main(QtWidgets.QMainWindow):
             else:
                 # Создаем экземпляр класса нейронной сети
                 self.network = NeuralNetwork.NN(slope=self.slope(),
-                                                input_neurons=self.lay[0],
                                                 hidden_neurons=self.lay[1],
                                                 learning_rate=float(learning_rate))
 
@@ -289,7 +307,6 @@ class Main(QtWidgets.QMainWindow):
         # Считываем количество эпох
         epochs = self.gui.txtEpochs.text()
 
-        # Обработка ошибок
         if value_error is not True:
             if epochs == '' or train_set == '' or test_set == '' or self.gui.tableWidgetTrain.rowCount() == 0:
                 train_error_msg = QMessageBox()
@@ -460,42 +477,56 @@ class Main(QtWidgets.QMainWindow):
                         train_error_msg.setText("Обучение или построение графиков невозможно!")
                         train_error_msg.exec()
 
-    def predict_nn(self):
+    # Функция для определения коэффициентов модели Чессера
+    def ratio(self, line):
+        # Получаем значения ячеек в переменные
+        cash = self.gui.tableWidgetInput.item(line, 0).text()
+        quick_sell = self.gui.tableWidgetInput.item(line, 1).text()
+        total_assets = self.gui.tableWidgetInput.item(line, 2).text()
+        net_sales = self.gui.tableWidgetInput.item(line, 3).text()
+        gross_income = self.gui.tableWidgetInput.item(line, 4).text()
+        total_debt = self.gui.tableWidgetInput.item(line, 5).text()
+        main_capital = self.gui.tableWidgetInput.item(line, 6).text()
+        net_assets = self.gui.tableWidgetInput.item(line, 7).text()
+        work_capital = self.gui.tableWidgetInput.item(line, 8).text()
+
+        # Рассчет коэффициентов модели Чессера
+        x1 = (float(cash) + float(quick_sell)) / float(total_assets)
+        x2 = float(net_sales) / (float(cash) + float(quick_sell))
+        x3 = float(gross_income) / float(total_assets)
+        x4 = float(total_debt) / float(total_assets)
+        x5 = float(main_capital) / float(net_assets)
+        x6 = float(work_capital) / float(net_sales)
+
+        # Возвращаем список с коэфициентами модели Чессера
+        return [x1, x2, x3, x4, x5, x6]
+
+    # Функция предсказания, где mode_line - режим предсказания для строчки с соответствующим номером,
+    def predict_nn(self, mode_line):
         if self.network is not None and self.gui.tableWidgetInput.rowCount() != 0:
 
-            # Считываем данные с входной таблицы в список
-            for i in range(self.gui.tableWidgetInput.rowCount()):
+            if mode_line:
+                for line in range(self.gui.tableWidgetInput.rowCount()):
+                    # Предсказываем кредитоспособность предприятия
+                    if self.network.predict(np.array(self.ratio(line))) > .5:
+                        result = "Кредитоспособно"
+                    else:
+                        result = "Некредитоспособно"
 
-                # Получаем значения ячеек в переменные
-                cash = self.gui.tableWidgetInput.item(i, 0).text()
-                quick_sell = self.gui.tableWidgetInput.item(i, 1).text()
-                total_assets = self.gui.tableWidgetInput.item(i, 2).text()
-                net_sales = self.gui.tableWidgetInput.item(i, 3).text()
-                gross_income = self.gui.tableWidgetInput.item(i, 4).text()
-                total_debt = self.gui.tableWidgetInput.item(i, 5).text()
-                main_capital = self.gui.tableWidgetInput.item(i, 6).text()
-                net_assets = self.gui.tableWidgetInput.item(i, 7).text()
-                work_capital = self.gui.tableWidgetInput.item(i, 8).text()
-
-                # Рассчет коэффициентов модели Чессера
-                x1 = (float(cash) + float(quick_sell)) / float(total_assets)
-                x2 = float(net_sales) / (float(cash) + float(quick_sell))
-                x3 = float(gross_income) / float(total_assets)
-                x4 = float(total_debt) / float(total_assets)
-                x5 = float(main_capital) / float(net_assets)
-                x6 = float(work_capital) / float(net_sales)
-
-                # Список с коэфициентами модели Чессера
-                input_stat = [x1, x2, x3, x4, x5, x6]
+                    # Выводим результат
+                    self.gui.tableWidgetInput.setItem(line, 9, QTableWidgetItem(result))
+            else:
+                # Индекс выделенной строки
+                row = self.gui.tableWidgetTrain.currentIndex().row() + 1
 
                 # Предсказываем кредитоспособность предприятия
-                if self.network.predict(np.array(input_stat)) > .5:
+                if self.network.predict(np.array(self.ratio(row))) > .5:
                     result = "Кредитоспособно"
                 else:
                     result = "Некредитоспособно"
 
                 # Выводим результат
-                self.gui.tableWidgetInput.setItem(i, 9, QTableWidgetItem(result))
+                self.gui.tableWidgetInput.setItem(row, 9, QTableWidgetItem(result))
         else:
             predict_error_msg = QMessageBox()
             predict_error_msg.setIcon(QMessageBox.Critical)
@@ -530,7 +561,6 @@ class Main(QtWidgets.QMainWindow):
                 # Создаем файл конфигурации с сохранением параметров обучения сети
                 config = cp.ConfigParser()
                 config.add_section("Settings")
-                config.set("Settings", "input_neurons", self.gui.tableWidgetLayersNetwork.item(0, 0).text())
                 config.set("Settings", "hidden_neurons", self.gui.tableWidgetLayersNetwork.item(1, 0).text())
                 config.set("Settings", "slope", str(self.slope()))
                 config.set("Settings", "learning_set", self.gui.txtLearningSet.text())
@@ -571,7 +601,6 @@ class Main(QtWidgets.QMainWindow):
 
         if path != "":
             # Получение значений из файла конфигурации
-            input_neurons = Main.get_setting(path, "Settings", "input_neurons")
             hidden_neurons = Main.get_setting(path, "Settings", "hidden_neurons")
             slope = Main.get_setting(path, "Settings", "slope")
             learning_set = Main.get_setting(path, "Settings", "learning_set")
@@ -580,7 +609,7 @@ class Main(QtWidgets.QMainWindow):
             learning_rate = Main.get_setting(path, "Settings", "learning_rate")
 
             # Количество весов
-            weights1_count = int(input_neurons) * int(hidden_neurons)
+            weights1_count = 6 * int(hidden_neurons)
             weights2_count = int(hidden_neurons)
 
             items = []  # Список элементов из файла конфигурации
@@ -590,9 +619,9 @@ class Main(QtWidgets.QMainWindow):
                 items.append(float(Main.get_setting(path, "Weights", "weights_input_{}".format(str(item)))))
 
             # Разбиваем список считанных значений из файла конфигураций на списки
-            weights1 = [items[d:d + int(input_neurons)] for d in range(0, len(items), int(input_neurons))]
+            weights1 = [items[d:d + 6] for d in range(0, len(items), 6)]
 
-            # чищаем список элементов
+            # Очищаем список элементов
             items.clear()
 
             # Считываем значения весов из файла конфигурации
@@ -604,10 +633,9 @@ class Main(QtWidgets.QMainWindow):
 
             # Установка значений из файла конфигурации
             self.gui.tableWidgetLayersNetwork.setRowCount(3)
-            self.gui.tableWidgetLayersNetwork.setItem(0, 0, QTableWidgetItem(input_neurons))
+            self.gui.tableWidgetLayersNetwork.setItem(0, 0, QTableWidgetItem("6"))
             self.gui.tableWidgetLayersNetwork.setItem(1, 0, QTableWidgetItem(hidden_neurons))
             self.gui.tableWidgetLayersNetwork.setItem(2, 0, QTableWidgetItem("1"))
-            self.gui.spboxInputLayer.setValue(int(input_neurons))
             self.gui.spboxHiddenLayers.setValue(int(hidden_neurons))
             self.gui.sliderSlope.setValue(int(float(slope) * 1000))
             self.gui.lblSlopeValue.setText(slope)
@@ -630,7 +658,6 @@ class Main(QtWidgets.QMainWindow):
 
             # Создаем экземпляр класса нейронной сети
             self.network = NeuralNetwork.NN(slope=float(slope),
-                                            input_neurons=layer[0],
                                             hidden_neurons=layer[1],
                                             learning_rate=float(learning_rate))
 
@@ -663,8 +690,10 @@ class Main(QtWidgets.QMainWindow):
         self.gui.clear_alt.triggered.connect(self.clr_alt)
         # Сигнал на cохранение таблицы
         self.gui.save_alt.triggered.connect(self.sv_alt)
-        # Сигнал на показ результата
+        # Сигнал на показ результата для строки
         self.gui.result_alt.triggered.connect(self.rslt_alt)
+        # Сигнал на показ результата для таблицы
+        self.gui.result_all_alt.triggered.connect(self.rslt_all_alt)
 
         # Сигнал на добавление строки
         self.gui.add_row_alt_train.triggered.connect(self.add_row_train)
@@ -676,7 +705,6 @@ class Main(QtWidgets.QMainWindow):
         self.gui.clear_alt_train.triggered.connect(self.clr_alt_train)
 
         # Обработка spinBox
-        self.gui.spboxInputLayer.valueChanged.connect(self.input_output_neurons)
         self.gui.spboxHiddenLayers.valueChanged.connect(self.hidden_layers_count)
 
         # Сигнал на загрузку TXT файла в таблицу с данными для обучения

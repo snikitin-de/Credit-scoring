@@ -10,6 +10,8 @@ import SpinBoxDelegateTrain
 
 # Класс интерфейса и обработки событий
 class MainUi:
+
+    # Настройка интерфейса
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 720)
@@ -59,15 +61,6 @@ class MainUi:
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.lblInputNeurons = QtWidgets.QLabel(self.grpBoxNeuronLayers)
-        self.lblInputNeurons.setMaximumSize(QtCore.QSize(120, 20))
-        self.lblInputNeurons.setObjectName("lblInputNeurons1")
-        self.verticalLayout_3.addWidget(self.lblInputNeurons)
-        self.spboxInputLayer = QtWidgets.QSpinBox(self.grpBoxNeuronLayers)
-        self.spboxInputLayer.setMaximumSize(QtCore.QSize(120, 20))
-        self.spboxInputLayer.setObjectName("spboxInputLayer")
-        self.spboxInputLayer.setMinimum(1)
-        self.verticalLayout_3.addWidget(self.spboxInputLayer)
         self.lblHiddenLayers = QtWidgets.QLabel(self.grpBoxNeuronLayers)
         self.lblHiddenLayers.setMaximumSize(QtCore.QSize(120, 20))
         self.lblHiddenLayers.setObjectName("lblHiddenLayers")
@@ -260,23 +253,37 @@ class MainUi:
         self.txtTestSet.setValidator(num_only_validator)
 
         # Контекстное меню для таблицы исходных данных
+        # Разделитель для меню
+        act = QAction(None, self.tableWidgetInput)
+        act.setSeparator(True)
+        act1 = QAction(None, self.tableWidgetInput)
+        act1.setSeparator(True)
+
         # Создание действий для таблицы
         self.add_row_alt = QAction("Добавить строку", self.tableWidgetInput)
         self.clear_row_alt = QAction("Очистить строку", self.tableWidgetInput)
         self.del_row_alt = QAction("Удалить строку", self.tableWidgetInput)
         self.clear_alt = QAction("Очистить таблицу", self.tableWidgetInput)
         self.save_alt = QAction("Сохранить таблицу", self.tableWidgetInput)
-        self.result_alt = QAction("Результат", self.tableWidgetInput)
+        self.result_alt = QAction("Результат (строка)", self.tableWidgetInput)
+        self.result_all_alt = QAction("Результат (таблица)", self.tableWidgetInput)
 
         # Добавление действий к таблице
         self.tableWidgetInput.addAction(self.add_row_alt)
         self.tableWidgetInput.addAction(self.clear_row_alt)
         self.tableWidgetInput.addAction(self.del_row_alt)
+        self.tableWidgetInput.addAction(act)
         self.tableWidgetInput.addAction(self.clear_alt)
         self.tableWidgetInput.addAction(self.save_alt)
+        self.tableWidgetInput.addAction(act1)
         self.tableWidgetInput.addAction(self.result_alt)
+        self.tableWidgetInput.addAction(self.result_all_alt)
 
         # Контекстное меню для таблицы данных для обучения
+        # Разделитель для меню
+        act = QAction(None, self.tableWidgetInput)
+        act.setSeparator(True)
+
         # Создание действий для таблицы
         self.add_row_alt_train = QAction("Добавить строку", self.tableWidgetTrain)
         self.clear_row_alt_train = QAction("Очистить строку", self.tableWidgetTrain)
@@ -287,6 +294,7 @@ class MainUi:
         self.tableWidgetTrain.addAction(self.add_row_alt_train)
         self.tableWidgetTrain.addAction(self.clear_row_alt_train)
         self.tableWidgetTrain.addAction(self.del_row_alt_train)
+        self.tableWidgetTrain.addAction(act)
         self.tableWidgetTrain.addAction(self.clear_alt_train)
 
         # Установка контекстного меню к таблице
@@ -297,17 +305,21 @@ class MainUi:
         self.tableWidgetInput.setItemDelegate(SpinBoxDelegate.SpinBoxDelegate())
         self.tableWidgetTrain.setItemDelegate(SpinBoxDelegateTrain.SpinBoxDelegateTrain())
 
+        # Включаем сортировку таблиц
+        self.tableWidgetInput.setSortingEnabled(True)
+        self.tableWidgetTrain.setSortingEnabled(True)
+
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    # Перевод интерфейса
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Кредитный скоринг"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Исходные данные"))
         self.grpBoxNetworkStruct.setTitle(_translate("MainWindow", "Структура нейронной сети"))
         self.grpBoxNeuronLayers.setTitle(_translate("MainWindow", "Нейроны в слоях"))
-        self.lblInputNeurons.setText(_translate("MainWindow", "Входной слой"))
         self.lblHiddenLayers.setText(_translate("MainWindow", "Скрытый слой"))
         self.btnCreateNetwork.setText(_translate("MainWindow", "Создать сеть"))
         self.grpBoxActivation.setTitle(_translate("MainWindow", "Сигмоида"))
