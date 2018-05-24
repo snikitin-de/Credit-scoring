@@ -212,15 +212,10 @@ class MainUi:
         self.actionNetworkLoad = QtWidgets.QAction(MainWindow)
         self.actionNetworkLoad.setObjectName("actionNetworkLoad")
         self.actionNetworkLoad.setShortcut("Ctrl+L")
-        self.actionHelp = QtWidgets.QAction(MainWindow)
-        self.actionHelp.setObjectName("actionHelp")
-        self.actionHelp.setShortcut("F1")
         self.actionAbout = QtWidgets.QAction(MainWindow)
         self.actionAbout.setObjectName("actionAbout")
         self.menuNetwork.addAction(self.actionNetworkSave)
         self.menuNetwork.addAction(self.actionNetworkLoad)
-        self.menuAbout.addAction(self.actionHelp)
-        self.menuAbout.addSeparator()
         self.menuAbout.addAction(self.actionAbout)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addMenu(self.menuNetwork)
@@ -351,7 +346,6 @@ class MainUi:
         self.actionNetworkSave.setText(_translate("MainWindow", "Сохранить сеть"))
         self.actionNetworkLoad.setText(_translate("MainWindow", "Загрузить сеть"))
         self.menuAbout.setTitle(_translate("MainWindow", "Справка"))
-        self.actionHelp.setText(_translate("MainWindow", "Просмотреть справку"))
         self.actionAbout.setText(_translate("MainWindow", "О программе"))
 
 
