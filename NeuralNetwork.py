@@ -73,6 +73,6 @@ class NN:
         weights_delta_layer_1 = error_layer_1 * gradient_layer_1
         self.weights_0_1 -= np.dot(inputs.reshape(len(inputs), 1), weights_delta_layer_1).T * self.learning_rate
 
-    # Метод рассчитывающий минимальное квадратичное отклонение
+    # Метод, рассчитывающий минимальное квадратичное отклонение
     def mse(self, x, y):
         return np.mean((x-y)**2)

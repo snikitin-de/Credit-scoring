@@ -23,7 +23,7 @@ class Node(QGraphicsEllipseItem):
 
     # Добавление ребра
     def add_edge(self, edge):
-        self.edges.append(edge)  # Обновляем ребро в список ребер
+        self.edges.append(edge)  # Добавляем ребро в список ребер
 
 
 # Класс ребро
